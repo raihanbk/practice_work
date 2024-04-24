@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterfeb/passing_data_bw_screens/ui/shoe_home.dart';
 import 'package:flutterfeb/screens/atm/atm_view.dart';
 import 'package:flutterfeb/screens/bottom_sheet.dart';
 import 'package:flutterfeb/screens/drawer.dart';
@@ -15,6 +16,7 @@ import 'package:flutterfeb/screens/slider.dart';
 import 'package:flutterfeb/screens/splash_screen.dart';
 import 'package:flutterfeb/shoe_store/mm.dart';
 import 'package:flutterfeb/shoe_store/shoe_store.dart';
+import 'package:flutterfeb/tourism_app_1/ui/tourism_home.dart';
 
 void main() {
   runApp(const MyApp());
@@ -28,7 +30,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(splashColor: Colors.transparent),
       debugShowCheckedModeBanner: false,
-      home: BtmSheet(),
+      home: const TourismHome(),
     );
   }
 }
