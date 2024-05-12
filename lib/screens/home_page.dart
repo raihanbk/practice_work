@@ -1,19 +1,55 @@
 import 'package:flutter/material.dart';
+import 'package:flutterfeb/database/local_database/shared_preference/view/login.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../model/m.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  State<HomePage> createState() => _HomePageState();
+}
 
-    List<Names> shohinee = names.map((e) => Names(name: e["name"], phone: e['phone'])).toList();
+class _HomePageState extends State<HomePage> {
+  late SharedPreferences preferences;
+  String? email;
+
+
+  @override
+  void initState() {
+    fetchData();
+    super.initState();
+  }
+
+  void fetchData() async {
+    preferences = await SharedPreferences.getInstance();
+    setState(() {
+      email = preferences.getString('email');
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    List<Names> shohinee =
+        names.map((e) => Names(name: e["name"], phone: e['phone'])).toList();
 
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(150),
-        child: AppBar(),
+        child: AppBar(
+          title: Text(email!),
+          actions: [
+            IconButton(
+                onPressed: () {
+                  preferences.setBool('loggedIn', false);
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (_) => const SharedPrefLogin()));
+                },
+                icon: const Icon(Icons.logout))
+          ],
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),

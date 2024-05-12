@@ -43,6 +43,14 @@ dependencies:
   awesome_bottom_bar: ^1.2.4
   font_awesome_flutter: ^10.7.0
   audioplayers: ^6.0.0
+  google_maps_flutter: ^2.6.1
+  geocoding: ^3.0.0
+  geolocator: ^11.0.0
+  baseflow_plugin_template: ^2.1.2
+  provider: ^6.1.2
+  get: ^4.6.6
+  badges: ^3.1.2
+  shared_preferences: ^2.2.3
 
 dev_dependencies:
   flutter_test:
